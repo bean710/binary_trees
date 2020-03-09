@@ -1,6 +1,6 @@
 #ifndef __BST__
 #define __BST__
-
+#include <stddef.h>
 /**
  * struct binary_tree_s - Binary tree node
  *
