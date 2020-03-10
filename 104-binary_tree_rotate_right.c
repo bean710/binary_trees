@@ -2,7 +2,7 @@
 /**
  * binary_tree_rotate_right - rotates BT right
  * @tree: Pointer to the root node
- * Return: Returns pointer to newly made node
+ * Return: Returns the pointer to newly made node
  */
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree)
 {
