@@ -29,7 +29,7 @@ unsigned int countNodes(const binary_tree_t *tree)
 			countNodes(tree->right));
 }
 /**
- * binary_tree_is_complete - Checks if tree is complete
+ * binary_tree_is_complete - Checks if trees is complete
  * @tree: Pointer to the root of the tree
  * Return: Returns boolean value returned from helper
  */
