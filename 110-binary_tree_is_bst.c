@@ -7,6 +7,10 @@
  */
 int BSTHelper(const binary_tree_t *tree, const binary_tree_t *prev)
 {
+/*
+ * if (!tree)
+ * return (0);
+ */
 	if (tree)
 	{
 		if (!BSTHelper(tree->left, prev))
