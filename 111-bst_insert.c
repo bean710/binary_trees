@@ -9,35 +9,19 @@
  */
 bst_t *insert_helper(bst_t *tree, int value)
 {
-	bst_t *node;
-
 	if (value < tree->n)
 	{
 		if (tree->left)
 			return (insert_helper(tree->left, value));
-		node = malloc(sizeof(bst_t));
-		if (!node)
-			return (NULL);
-		node->parent = tree;
-		node->left = NULL;
-		node->right = NULL;
-		node->n = value;
-		tree->left = node;
-		return (node);
+		tree->left = binary_tree_node(tree, value);
+		return (tree->left);
 	}
 	else if (value > tree->n)
 	{
 		if (tree->right)
 			return (insert_helper(tree->right, value));
-		node = malloc(sizeof(bst_t));
-		if (!node)
-			return (NULL);
-		node->parent = tree;
-		node->left = NULL;
-		node->right = NULL;
-		node->n = value;
-		tree->right = node;
-		return (node);
+		tree->right = binary_tree_node(tree, value);
+		return (tree->right);
 	}
 
 	return (NULL);
@@ -51,22 +35,13 @@ bst_t *insert_helper(bst_t *tree, int value)
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *node;
-
 	if (!tree)
 		return (NULL);
 
 	if (!*tree)
 	{
-		node = malloc(sizeof(bst_t));
-		if (!node)
-			return (NULL);
-		node->n = value;
-		node->parent = NULL;
-		node->left = NULL;
-		node->right = NULL;
-		*tree = node;
-		return (node);
+		*tree = binary_tree_node(*tree, value);
+		return (*tree);
 	}
 
 	return (insert_helper(*tree, value));
