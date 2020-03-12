@@ -46,7 +46,12 @@ void run_level(const binary_tree_t *node, size_t level, void (*func)(int))
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	size_t depth, height = binary_tree_height(tree);
+	size_t depth, height;
+
+	if (!tree || !func)
+		return;
+
+	height = binary_tree_height(tree);
 
 	for (depth = 0; depth < height + 1; ++depth)
 		run_level(tree, depth, func);
