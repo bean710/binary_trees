@@ -1,38 +1,39 @@
 #include "binary_trees.h"
+
 /**
- * BSTHelper - Checks if the tree is a BST
- * @tree: Parent node
- * @prev: Previous node
- * Return: Boolean value of the BST status of tree
+ * is_search_tree - Recursive function to check if a tree is a search tree
+ * @tree: Pointer to the node currently being checked
+ * @min: Pointer to the node that is the current minimum
+ * @max: Pointer to the node that is the current maximum
+ *
+ * Return: 1 if BST, otherwise 0
  */
-int BSTHelper(const binary_tree_t *tree, const binary_tree_t *prev)
+int is_search_tree(const binary_tree_t *tree, const binary_tree_t *min,
+		const binary_tree_t *max)
 {
 	if (!tree)
 		return (1);
-	if (tree)
-	{
-		if (!BSTHelper(tree->left, prev))
-			return (0);
-		if (prev != NULL && tree->n <= prev->n)
-			return (0);
-		prev = tree;
 
-		return (BSTHelper(tree->right, prev));
-	}
+	if (min && min->n >= tree->n)
+		return (0);
 
-	return (1);
+	if (max && max->n <= tree->n)
+		return (0);
+
+	return (is_search_tree(tree->left, min, tree) &
+			is_search_tree(tree->right, tree, max));
 }
+
 /**
- * binary_tree_is_bst - Checks if the tree is a BST
- * @tree: Parent node
- * Return: Boolean value of the BST status of tree
+ * binary_tree_is_bst - Checks if a binary tree is a BST
+ * @tree: Pointer to the root of the tree
+ *
+ * Return: 1 if BST, otherwise 0
  */
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
-	const binary_tree_t *prev = NULL;
-
 	if (!tree)
 		return (0);
 
-	return (BSTHelper(tree, prev));
+	return (is_search_tree(tree, NULL, NULL));
 }
