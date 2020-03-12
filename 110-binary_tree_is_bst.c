@@ -29,9 +29,10 @@ int BSTHelper(const binary_tree_t *tree, const binary_tree_t *prev)
  */
 int binary_tree_is_bst(const binary_tree_t *tree)
 {	
+	const binary_tree_t *prev = NULL;
+	
 	if (!tree)
 		return (0);
-	const binary_tree_t *prev = NULL;
 
 	return (BSTHelper(tree, prev));
 }
